@@ -1,11 +1,17 @@
-import Image from 'next/image'
+import ChampionsList from "@/components/ChampionsList";
+import { baseUrl } from "@/constants";
+import { ChampionDTO, ChampionsListDTO } from "@/dto/models";
+import { isNumeric } from "@/utils";
+import Image from "next/image";
 
 export default async function Home() {
-  const res = await fetch(process.env.URL + "/api")
-  const data = await res.json()
-  console.log(data)
+	let url = baseUrl + `/api/champions`;
+	let res = await fetch(url);
+	let data: ChampionsListDTO = await res.json();
 
-  return (
-    <div className="">{data}</div>
-  )
+	return (
+		<div className="m-0 p-0">
+			<ChampionsList championsList={data} />
+		</div>
+	);
 }
