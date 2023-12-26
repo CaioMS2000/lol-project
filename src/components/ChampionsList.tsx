@@ -9,7 +9,7 @@ interface ChampionsListProps extends PropsWithChildren {
 }
 
 export default function ChampionsList({ championsList }: ChampionsListProps) {
-	const url = baseUrl + `/api/champion/`;
+	const url = baseUrl + `/api/champion/short/`;
     const imageSize = 100
 	const [champions, setChampions] = useState([] as ChampionDTO[]);
 

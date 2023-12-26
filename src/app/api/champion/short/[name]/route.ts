@@ -5,8 +5,9 @@ import * as fs from "fs";
 import { NextResponse, NextRequest } from "next/server";
 
 export async function GET(request: NextRequest) {
-	const requestedChampion =
-		request.nextUrl.pathname.split("/api/champion/")[1];
+	const {pathname} = request.nextUrl
+	const pathnameSplited = pathname.split('/')
+	const requestedChampion = pathnameSplited[pathnameSplited.length - 1];
 
 	const res = JSON.parse(
 		fs.readFileSync(
