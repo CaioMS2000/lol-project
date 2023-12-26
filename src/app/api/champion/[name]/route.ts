@@ -1,25 +1,34 @@
-import { basePath, dataSetVersion } from "@/constants";
+import { basePath } from "@/constants";
 import { ChampionDTO } from "@/dto/models";
-import { toCapitalCase } from "@/utils";
+import { normalizeName, toCapitalCase } from "@/utils";
 import * as fs from "fs";
 import { NextResponse, NextRequest } from "next/server";
 
 export async function GET(request: NextRequest) {
+	const requestedChampion =
+		request.nextUrl.pathname.split("/api/champion/")[1];
 
-    const requestedChampion = request.nextUrl.pathname.split('/api/champion/')[1]
-    
-    const res = JSON.parse(fs.readFileSync(`${basePath}/${dataSetVersion}/data/pt_BR/champion/${requestedChampion}.json`, 'utf8'))['data'][requestedChampion];
+	const res = JSON.parse(
+		fs.readFileSync(
+			`${basePath}/game/data/pt_BR/champion/${requestedChampion}.json`,
+			"utf8"
+		)
+	)["data"][requestedChampion];
 
-    const champion = {} as ChampionDTO
-    const championProfileImage = fs.readFileSync(`${basePath}/${dataSetVersion}/img/champion/${requestedChampion}.png`)
-    const championSplashImage = fs.readFileSync(`${basePath}/img/champion/splash/${requestedChampion}_0.jpg`)
+	const champion = {} as ChampionDTO;
+	const championProfileImage = fs.readFileSync(
+		`${basePath}/game/img/champion/${requestedChampion}.png`
+	);
+	const championSplashImage = fs.readFileSync(
+		`${basePath}/img/champion/splash/${normalizeName(requestedChampion)}_0.jpg`
+	);
 
-    champion['name'] = res['name']
-    champion['title'] = toCapitalCase(res['title'])
-    champion['images'] = {
-        profile: Buffer.from(championProfileImage).toString('base64'),
-        splash: Buffer.from(championSplashImage).toString('base64')
-    }    
+	champion["name"] = res["name"];
+	champion["title"] = toCapitalCase(res["title"]);
+	champion["images"] = {
+		profile: Buffer.from(championProfileImage).toString("base64"),
+		splash: Buffer.from(championSplashImage).toString("base64"),
+	};
 
-    return NextResponse.json(champion)
+	return NextResponse.json(champion);
 }
