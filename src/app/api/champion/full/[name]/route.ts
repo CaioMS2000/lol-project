@@ -1,5 +1,5 @@
 import { basePath } from "@/constants";
-import { ChampionDTO } from "@/dto/models";
+import { Champion, Skin } from "@/dto/models";
 import { normalizeName, toCapitalCase } from "@/utils";
 import * as fs from "fs";
 import { NextResponse, NextRequest } from "next/server";
@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
 		)
 	)["data"][requestedChampion];
 
-	const champion = {} as ChampionDTO;
+	const champion = {} as Champion;
 	const championProfileImage = fs.readFileSync(
 		`${basePath}/game/img/champion/${requestedChampion}.png`
 	);
@@ -30,6 +30,23 @@ export async function GET(request: NextRequest) {
 		profile: Buffer.from(championProfileImage).toString("base64"),
 		splash: Buffer.from(championSplashImage).toString("base64"),
 	};
+
+	const skinsRef: any[] = res['skins']
+	const skins: Skin[] = []
+
+	skinsRef.forEach(sRef => {
+		const championSplashSkinImage = fs.readFileSync(
+			`${basePath}/img/champion/splash/${normalizeName(requestedChampion)}_${sRef['num']}.jpg`
+		);
+
+		skins.push({
+			chromas: sRef['chromas'],
+			image: Buffer.from(championSplashSkinImage).toString("base64"),
+			name: sRef['name']
+		})
+	})
+
+	champion['skins'] = skins
 
 	return NextResponse.json(champion);
 }

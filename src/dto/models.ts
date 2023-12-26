@@ -14,18 +14,7 @@ export interface ChampionDTO{
     }
 }
 
-export interface Champion{
-    name: string
-    title: string
-
-    /**
-     * Image buffer in String base64
-     * @description String Base64
-     */
-    images: {
-        profile: string,
-        splash: string,
-    }
+export interface Champion extends ChampionDTO{
 
     skins: Skin[]
 }
