@@ -13,3 +13,29 @@ export interface ChampionDTO{
         splash: string,
     }
 }
+
+export interface Champion{
+    name: string
+    title: string
+
+    /**
+     * Image buffer in String base64
+     * @description String Base64
+     */
+    images: {
+        profile: string,
+        splash: string,
+    }
+
+    skins: Skin[]
+}
+
+export interface Skin{
+    /**
+     * Image buffer in String base64
+     * @description String Base64
+     */
+    image: string,
+    name: string,
+    chromas: boolean,
+}
