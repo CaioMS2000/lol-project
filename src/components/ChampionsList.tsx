@@ -27,12 +27,14 @@ export default function ChampionsList({ championsList }: ChampionsListProps) {
 		// <div className="flex flex-wrap gap-3">
 		<div className="grid grid-cols-3 gap-3">
 			{champions.map((champ, index) => (
-                <div key={index} className='flex flex-col border-2 border-gray-500 items-center'>
-                    <p>{champ.name}</p>
-                {/* <img src={`data:image/png;base64,${champ.images.profile}`} alt="Champion" /> */}
-                <Image width={imageSize} height={imageSize} src={`data:image/png;base64,${champ.images.profile}`} alt="Champion" />
-				<p>{champ.title}</p>
-                </div>
+                <a href={`/champion/${champ.name}`}>
+					<div key={index} className='flex flex-col border-2 border-gray-500 items-center'>
+						<p>{champ.name}</p>
+					{/* <img src={`data:image/png;base64,${champ.images.profile}`} alt="Champion" /> */}
+					<Image width={imageSize} height={imageSize} src={`data:image/png;base64,${champ.images.profile}`} alt="Champion" />
+									<p>{champ.title}</p>
+					</div>
+				</a>
 			))}
 		</div>
 	);
