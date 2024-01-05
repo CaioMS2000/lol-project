@@ -8,6 +8,7 @@ export async function GET(request: NextRequest) {
 	const {pathname} = request.nextUrl
 	const pathnameSplited = pathname.split('/')
 	const requestedChampion = pathnameSplited[pathnameSplited.length - 1];
+	requestedChampion.replace(' ', '')
 
 	const res = JSON.parse(
 		fs.readFileSync(

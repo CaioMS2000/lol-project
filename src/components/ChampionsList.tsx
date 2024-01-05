@@ -33,7 +33,7 @@ export default function ChampionsList({ championsList }: ChampionsListProps) {
 					className="flex flex-col border-2 border-gray-500 items-center align-middle cursor-pointer mx-auto w-[200px] p-3 rounded-lg font-bold gap-2"
 					style={{boxShadow: '#373737 0px 0px 19px 0px'}}
 					onClick={() => {
-						push(`/champion/${champ.name}`);
+						push(`/champion/${champ.name.replace(' ', '')}`);
 					}}
 				>
 					<p className=''>{champ.name}</p>
