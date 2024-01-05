@@ -14,6 +14,7 @@ export default async function ChampionPage({params:{name}}:ChampionPageProps){
 	let res = await fetch(url);
 	let data: Champion= await res.json();
     console.log(data.name)
+    // console.log(data.skins)
     console.log(data.skins.map(sk => sk.name))
 
   return(
