@@ -11,7 +11,7 @@ interface ChampionPageProps extends PropsWithChildren{
 
 export default async function ChampionPage({params:{name}}:ChampionPageProps){
     let url = baseUrl + `/api/champion/full/${name}`;
-	let res = await fetch(url);
+	let res = await fetch(url, {cache: 'no-cache'});
 	let data: Champion= await res.json();
     console.log(data.name)
     // console.log(data.skins)

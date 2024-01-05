@@ -21,7 +21,7 @@ export default function ChampionsList({ championsList }: ChampionsListProps) {
 			const res = await fetch(compUrl);
 			const champion: ChampionDTO = await res.json();
 
-			setChampions((prevState) => [...prevState, champion].slice(0, 50));
+			setChampions((prevState) => [...prevState, champion]);
 		});
 	}, []);
 
