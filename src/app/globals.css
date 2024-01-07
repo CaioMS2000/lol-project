@@ -1,3 +1,18 @@
+/* FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=Bungee+Spice&family=Lilita+One&family=Orbitron:wght@400;500;600;700;800;900&family=Oswald:wght@300;400;500;600;700&family=Overlock+SC&family=Permanent+Marker&family=Rubik+Doodle+Shadow&family=Russo+One&family=Tektur:wght@400;500;600;700;800;900&display=swap');
+
+/* font-family: 'Archivo Black', sans-serif;
+font-family: 'Bebas Neue', sans-serif;
+font-family: 'Bungee Spice', sans-serif;
+font-family: 'Lilita One', sans-serif;
+font-family: 'Orbitron', sans-serif;
+font-family: 'Oswald', sans-serif;
+font-family: 'Overlock SC', sans-serif;
+font-family: 'Permanent Marker', cursive;
+font-family: 'Rubik Doodle Shadow', system-ui;
+font-family: 'Russo One', sans-serif;
+font-family: 'Tektur', sans-serif; */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
