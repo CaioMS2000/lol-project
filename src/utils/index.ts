@@ -11,10 +11,18 @@ export function toCapitalCase(str: string): string {
 	);
 }
 
-export function normalizeName(name: string){
+export function normalizeName(name: string, exceptions?: string[]){
 	const normalizedName = normalizedNames[name]
 
-	if(normalizedName) return normalizedName;
+	if(!exceptions && normalizedName) return normalizedName;
+
+	if(exceptions){
+		if(exceptions.includes(name)){
+			return name
+		}else{
+			return normalizedName
+		}
+	}
 
 	return name
 }

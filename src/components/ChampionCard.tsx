@@ -3,6 +3,7 @@ import { Champion } from "@/dto/models";
 import { PropsWithChildren, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Carousel from "./Carousel";
+import ChampionSkinsCarousel from "./ChampionSkinsCarousel";
 
 interface ChampionCardProps extends PropsWithChildren {
 	champion: Champion;
@@ -11,13 +12,13 @@ interface ChampionCardProps extends PropsWithChildren {
 export default function ChampionCard({ champion }: ChampionCardProps) {
 	return (
 		<>
-			<div className="flex flex-col p-2 gap-3">
+			<div className="flex flex-col p-2 gap-3 main">
 				<a href="/" className="font-bold underline">
 					Início
 				</a>				
 				<Banner champion={champion} />
 				<p className="text-center font-bold text-3xl">Skins</p>
-				<Carousel images={champion.skins.map(skin => `data:image/png;base64,${skin.image}`)} className="w-[70%] mx-auto" />
+				<ChampionSkinsCarousel champion={champion}/>
 			</div>
 		</>
 	);
@@ -26,9 +27,10 @@ export default function ChampionCard({ champion }: ChampionCardProps) {
 function Banner({ champion }: { champion: Champion }) {
 	return (
 		<>
-			<div className="card shadow-xl image-full !rounded-sm before:!rounded-sm before:!bg-black before:!opacity-50 ">
-					<figure>
+			<div className="card shadow-xl image-full !rounded-sm before:!rounded-sm before:!bg-black before:!opacity-50 w-fit mx-auto">
+					<figure className="bg-zinc-900">
 						<img
+							className="min-w-[1500px]"
 							src={`data:image/png;base64,${champion.skins[0].image}`}
 							alt={champion.name}
 						/>
