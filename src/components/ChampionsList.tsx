@@ -28,7 +28,7 @@ export default function ChampionsList({ championsList }: ChampionsListProps) {
 
 	return (
 		<div className="grid grid-cols-5 gap-10">
-			{champions.map((champ, index) => (
+			{(Array.from(new Set(champions))).map((champ, index) => (
 				<div
 					key={index}
 					className="flex flex-col border-2 border-gray-500 items-center align-middle cursor-pointer mx-auto w-[200px] p-3 rounded-lg font-bold gap-2"

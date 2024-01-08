@@ -16,12 +16,10 @@ export default function ChampionSkinsCarousel({
 	const path = usePathname();
 	const { push } = useRouter();
 
-	console.log(champion.skins.map(s => s.name))
     const images = champion.skins.filter((sk) => sk.name != "default").map(
 		(sk) => `data:image/png;base64,${sk.image}`
 	);
-    console.log(images)
-	const indexOfLast = images.length - 2;
+	const indexOfLast = images.length - 1;
 
 	function handleSlide() {
 		setTimeout(() => {
