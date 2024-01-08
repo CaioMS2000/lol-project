@@ -5,13 +5,13 @@ interface NavbarProps extends PropsWithChildren {}
 export default async function Navbar({}: NavbarProps) {
 	return (
 		<>
-			<div className="navbar bg-base-100">
+			<div className="navbar bg-base-100 mb-5">
 				<div className="flex-1 gap-5">
                     <img src="/img/lol-l-logo.png" alt="LOL logo" className="max-h-[100px]" />
-                    <p className="text-5xl font-bebas">LOL info</p>
+                    <p className="text-5xl font-bungee font-bold">SI LOL</p>
 				</div>
 				<div className="flex-none">
-					<ul className="menu menu-horizontal px-1">
+					{/* <ul className="menu menu-horizontal px-1">
 						<li>
 							<a>Link</a>
 						</li>
@@ -28,7 +28,7 @@ export default async function Navbar({}: NavbarProps) {
 								</ul>
 							</details>
 						</li>
-					</ul>
+					</ul> */}
 				</div>
 			</div>
 		</>
