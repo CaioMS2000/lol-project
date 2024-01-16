@@ -7,8 +7,10 @@ export default async function Navbar({}: NavbarProps) {
 		<>
 			<div className="navbar bg-base-100 mb-5">
 				<div className="flex-1 gap-5">
-                    <img src="/img/lol-l-logo.png" alt="LOL logo" className="max-h-[100px]" />
-                    <p className="text-5xl font-bungee font-bold">SI LOL</p>
+                    <a href="/"><img src="/img/lol-l-logo.png" alt="LOL logo" className="max-h-[100px]" /></a>
+                    <a href="/">
+						<p className="text-5xl font-bungee font-bold">SI LOL</p>
+					</a>
 				</div>
 				<div className="flex-none">
 					{/* <ul className="menu menu-horizontal px-1">

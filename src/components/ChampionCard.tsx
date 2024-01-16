@@ -12,10 +12,7 @@ interface ChampionCardProps extends PropsWithChildren {
 export default function ChampionCard({ champion }: ChampionCardProps) {
 	return (
 		<>
-			<div className="flex flex-col p-2 gap-3 main">
-				<a href="/" className="font-bold underline">
-					Início
-				</a>				
+			<div className="flex flex-col p-2 gap-3 main">	
 				<Banner champion={champion} />
 				<p className="text-center font-bold text-3xl">Skins</p>
 				<ChampionSkinsCarousel champion={champion}/>
