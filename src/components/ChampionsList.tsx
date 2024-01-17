@@ -17,18 +17,20 @@ export default function ChampionsList({ championsNames }: ChampionsListProps) {
 	const { push } = useRouter();
 
 	useEffect(() => {
-		championsNames.forEach((champName) => {
+		async function fetchChampion(champName: string){
+			const compUrl = url + champName;
+			const res = await fetch(compUrl, {cache: "no-cache"});
+			const champion: LightChampion = await res.json();
+			setChampions((prevState) => [...prevState, champion]);
+		}
+		setChampions([])
+		champions.splice(0, champions.length)
 
-			async function fetchChampion(){
-				const compUrl = url + champName;
-				const res = await fetch(compUrl, {cache: "no-cache"});
-				const champion: LightChampion = await res.json();
-				setChampions((prevState) => [...prevState, champion]);
-			}
+		for(const championName of championsNames){
+			fetchChampion(championName)
+		}
 
-			fetchChampion()
-		});
-	}, [championsNames]);
+	}, []);
 
 	return (
 		<div className="grid grid-cols-5 gap-10">
