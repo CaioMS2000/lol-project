@@ -14,6 +14,7 @@ export default function ChampionsList({ championsNames }: ChampionsListProps) {
 	const url = baseUrl + `/api/champion/short/`;
 	const imageSize = 100;
 	const [champions, setChampions] = useState<LightChampion[]>([]);
+	const [champions2, setChampions2] = useState<LightChampion[]>([]);
 	const { push } = useRouter();
 
 	useEffect(() => {
@@ -32,9 +33,26 @@ export default function ChampionsList({ championsNames }: ChampionsListProps) {
 
 	}, []);
 
+	useEffect(() => {
+		champions.forEach(c => {
+			console.log(c.name)
+
+			setChampions2(prevState => {
+				const data = prevState
+
+				if(!champions2.find(champ => champ.name === c.name)){
+					data.push(c)
+				}
+
+				return data
+			});
+		})
+		console.log('\n\n')
+	}, [champions])
+
 	return (
 		<div className="grid grid-cols-5 gap-10">
-			{champions.map((champ, index) => (
+			{champions2.map((champ, index) => (
 				<div
 					key={index}
 					className="flex flex-col border-2 border-gray-500 items-center align-middle cursor-pointer mx-auto w-[200px] p-3 rounded-lg font-bold gap-2"
