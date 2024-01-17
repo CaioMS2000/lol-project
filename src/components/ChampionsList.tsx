@@ -21,19 +21,18 @@ export default function ChampionsList({ championsNames }: ChampionsListProps) {
 
 			async function fetchChampion(){
 				const compUrl = url + champName;
-				const res = await fetch(compUrl);
+				const res = await fetch(compUrl, {cache: "no-cache"});
 				const champion: LightChampion = await res.json();
-	
 				setChampions((prevState) => [...prevState, champion]);
 			}
 
 			fetchChampion()
 		});
-	}, []);
+	}, [championsNames]);
 
 	return (
 		<div className="grid grid-cols-5 gap-10">
-			{Array.from(new Set(champions)).map((champ, index) => (
+			{champions.map((champ, index) => (
 				<div
 					key={index}
 					className="flex flex-col border-2 border-gray-500 items-center align-middle cursor-pointer mx-auto w-[200px] p-3 rounded-lg font-bold gap-2"
