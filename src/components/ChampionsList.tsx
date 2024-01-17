@@ -17,12 +17,17 @@ export default function ChampionsList({ championsNames }: ChampionsListProps) {
 	const { push } = useRouter();
 
 	useEffect(() => {
-		championsNames.forEach(async (champName) => {
-			const compUrl = url + champName;
-			const res = await fetch(compUrl);
-			const champion: LightChampion = await res.json();
+		championsNames.forEach((champName) => {
 
-			setChampions((prevState) => [...prevState, champion]);
+			async function fetchChampion(){
+				const compUrl = url + champName;
+				const res = await fetch(compUrl);
+				const champion: LightChampion = await res.json();
+	
+				setChampions((prevState) => [...prevState, champion]);
+			}
+
+			fetchChampion()
 		});
 	}, []);
 
