@@ -8,7 +8,7 @@ export default async function Home() {
 
 	return (
 		<div className="m-0 p-2">
-			<ChampionsList championsList={data} />
+			<ChampionsList championsNames={data} />
 		</div>
 	);
 }

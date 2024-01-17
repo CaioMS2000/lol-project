@@ -7,17 +7,17 @@ import { useRouter } from "next/navigation";
 import { normalizeName } from "@/utils";
 
 interface ChampionsListProps extends PropsWithChildren {
-	championsList: string[];
+	championsNames: string[];
 }
 
-export default function ChampionsList({ championsList }: ChampionsListProps) {
+export default function ChampionsList({ championsNames }: ChampionsListProps) {
 	const url = baseUrl + `/api/champion/short/`;
 	const imageSize = 100;
 	const [champions, setChampions] = useState<LightChampion[]>([]);
 	const { push } = useRouter();
 
 	useEffect(() => {
-		championsList.forEach(async (champName) => {
+		championsNames.forEach(async (champName) => {
 			const compUrl = url + champName;
 			const res = await fetch(compUrl);
 			const champion: LightChampion = await res.json();
