@@ -4,6 +4,7 @@ import { PropsWithChildren, useEffect, useState } from "react";
 import Carousel from "./Carousel";
 import { usePathname, useRouter } from "next/navigation";
 import { normalizeName } from "@/utils";
+import { BsCircleFill, BsDot, BsFillPersonFill, BsPersonSquare } from "react-icons/bs";
 
 interface ChampionSkinsCarouselProps extends PropsWithChildren {
 	champion: Champion;
@@ -43,12 +44,14 @@ export default function ChampionSkinsCarousel({
 	return (
 		<>
 			<div className="flex flex-col max-w-[1000px] mx-auto">
-				<p className="text-center font-bold">
+				<p className="font-bold inline-flex items-center justify-center gap-4 text-xl">
+					<BsCircleFill className="text-blue-700 max-h-3"/>
 					{
 						champion.skins.filter((sk) => sk.name != "default")[
 							currentIndex
 						].name
 					}
+					<BsCircleFill className="text-blue-700 max-h-3"/>
 				</p>
 				<div className={"carousel w-full "}>
 					{images

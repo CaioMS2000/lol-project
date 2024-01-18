@@ -1,3 +1,4 @@
+import { bungee } from "@/fonts/tailwind-like";
 import { PropsWithChildren } from "react";
 
 interface NavbarProps extends PropsWithChildren {}
@@ -9,7 +10,7 @@ export default async function Navbar({}: NavbarProps) {
 				<div className="flex-1 gap-5">
                     <a href="/"><img src="/img/lol-l-logo.png" alt="LOL logo" className="max-h-[100px]" /></a>
                     <a href="/">
-						<p className="text-5xl font-bungee font-bold">SI LOL</p>
+						<p className={"text-5xl font-bold " + bungee}>SI LOL</p>
 					</a>
 				</div>
 				<div className="flex-none">
