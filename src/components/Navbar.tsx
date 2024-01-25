@@ -31,21 +31,21 @@ export default function Navbar({}: NavbarProps) {
 
 	return (
 		<>
-			<div className="navbar bg-base-100 mb-5" ref={navBarRef}>
-				<div className="flex-1 gap-5">
+			<div className="navbar bg-base-100 mb-5 justify-center sm:justify-normal" ref={navBarRef}>
+				<div className="flex-col sm:flex-row gap-5">
 					<a href="/">
 						<img
 							src="/img/lol-l-logo.png"
 							alt="LOL logo"
-							className="max-h-[100px]"
+							className="max-h-[50px] sm:max-h-[100px]"
 						/>
 					</a>
 					<a href="/">
-						<p className={"text-5xl font-bold " + bungee}>SI LOL</p>
+						<p className={"text-lg sm:text-5xl font-bold " + bungee}>SI LOL</p>
 					</a>
 				</div>
-				<div className="flex-none">
-					{/* <ul className="menu menu-horizontal px-1">
+				{/* <div className="flex-none">
+					<ul className="menu menu-horizontal px-1">
 						<li>
 							<a>Link</a>
 						</li>
@@ -62,8 +62,8 @@ export default function Navbar({}: NavbarProps) {
 								</ul>
 							</details>
 						</li>
-					</ul> */}
-				</div>
+					</ul>
+				</div> */}
 			</div>
 			{(showMiniNav && !(path === "/")) && (
 				<div className="fixed top-2 left-2 z-50 font-bold text-lg bg-white px-3 py-1 text-black inline-flex items-center rounded-xl cursor-pointer"
