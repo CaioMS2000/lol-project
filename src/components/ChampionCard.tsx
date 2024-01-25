@@ -15,9 +15,9 @@ export default function ChampionCard({ champion }: ChampionCardProps) {
 		<>
 			<div className={"flex flex-col p-2 gap-3 " + orbitron}>
 				<Banner champion={champion} />
-				<p className="text-left p-5 font-bold text-3xl inline-flex items-center">
+				<p className="sm:text-left p-5 font-bold text-3xl inline-flex items-center text-center">
 					Skins
-					<BsCaretRightFill className="text-blue-700" />
+					<BsCaretRightFill className="text-blue-700 hidden sm:block" />
 				</p>
 				<ChampionSkinsCarousel champion={champion} />
 			</div>
@@ -41,7 +41,7 @@ function Banner({ champion }: { champion: Champion }) {
 						<div className="border-2 font-bold w-fit text-3xl py-5 px-10 border-white text-white">
 							{champion.name}
 						</div>
-						<div className="font-bold text-white text-5xl h-fit underline underline-offset-2">
+						<div className="font-bold text-white text-center text-5xl h-fit underline underline-offset-2">
 							{champion.title}
 						</div>
 					</div>

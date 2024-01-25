@@ -44,7 +44,7 @@ export default function ChampionSkinsCarousel({
 	return (
 		<>
 			<div className="flex flex-col max-w-[1000px] mx-auto">
-				<p className="font-bold inline-flex items-center justify-center gap-4 text-xl">
+				<p className="font-bold inline-flex items-center text-center justify-center gap-1 sm:gap-4 text-xl">
 					<BsCircleFill className="text-blue-700 max-h-3"/>
 					{
 						champion.skins.filter((sk) => sk.name != "default")[
