@@ -1,15 +1,46 @@
+"use client";
+import { PropsWithChildren, useEffect, useRef, useState } from "react";
+import { BsCaretLeftFill } from "react-icons/bs";
 import { bungee } from "@/fonts/tailwind-like";
-import { PropsWithChildren } from "react";
+import { usePathname, useRouter } from "next/navigation";
 
 interface NavbarProps extends PropsWithChildren {}
 
-export default async function Navbar({}: NavbarProps) {
+export default function Navbar({}: NavbarProps) {
+	const navBarRef = useRef<HTMLDivElement>(null);
+	const [showMiniNav, setShowMiniNav] = useState(false);
+	const {push} = useRouter()
+	const path = usePathname()
+
+	useEffect(() => {
+		const handleScroll = () => {
+			if (navBarRef == null || navBarRef.current == null) return;
+
+			const scrollPosition = window.scrollY;
+			const triggerPosition =	navBarRef.current.offsetTop + navBarRef.current.offsetHeight;
+
+			setShowMiniNav(scrollPosition > triggerPosition);
+		};
+
+		window.addEventListener("scroll", handleScroll);
+
+		return () => {
+			window.removeEventListener("scroll", handleScroll);
+		};
+	}, []);
+
 	return (
 		<>
-			<div className="navbar bg-base-100 mb-5">
+			<div className="navbar bg-base-100 mb-5" ref={navBarRef}>
 				<div className="flex-1 gap-5">
-                    <a href="/"><img src="/img/lol-l-logo.png" alt="LOL logo" className="max-h-[100px]" /></a>
-                    <a href="/">
+					<a href="/">
+						<img
+							src="/img/lol-l-logo.png"
+							alt="LOL logo"
+							className="max-h-[100px]"
+						/>
+					</a>
+					<a href="/">
 						<p className={"text-5xl font-bold " + bungee}>SI LOL</p>
 					</a>
 				</div>
@@ -34,6 +65,13 @@ export default async function Navbar({}: NavbarProps) {
 					</ul> */}
 				</div>
 			</div>
+			{(showMiniNav && !(path === "/")) && (
+				<div className="fixed top-2 left-2 z-50 font-bold text-lg bg-white px-3 py-1 text-black inline-flex items-center rounded-xl cursor-pointer"
+				onClick={() => push('/')}
+				>
+					<BsCaretLeftFill className="text-blue-700"/>INÍCIO
+				</div>
+			)}
 		</>
 	);
 }
