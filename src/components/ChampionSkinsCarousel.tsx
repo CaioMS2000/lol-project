@@ -64,7 +64,7 @@ export default function ChampionSkinsCarousel({
 								<div
 									id={`slide${index}`}
 									key={index}
-									className="carousel-item relative w-full min-w-[500px]"
+									className="carousel-item relative w-full"
 								>
 									<img src={i} alt="x" className="w-full" />
 									<div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
