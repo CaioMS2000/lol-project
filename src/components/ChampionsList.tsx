@@ -4,7 +4,7 @@ import { LightChampion } from "@/dto/models";
 import { PropsWithChildren, useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { normalizeName } from "@/utils";
+import { fetchData, normalizeName } from "@/utils";
 import { russo_one } from "@/fonts/tailwind-like";
 
 interface ChampionsListProps extends PropsWithChildren {
@@ -20,8 +20,7 @@ export default function ChampionsList({ championsNames }: ChampionsListProps) {
 	useEffect(() => {
 		const fetchChampion = async (champName: string) => {
 		  const compUrl = url + champName;
-		  const res = await fetch(compUrl, { cache: "no-cache" });
-		  const champion: LightChampion = await res.json();
+		  const champion: LightChampion = await fetchData(compUrl, { cache: "no-cache" });
 	  
 		  setChampions((prevState) => {
 			const data = [...prevState];
