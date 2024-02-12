@@ -14,16 +14,6 @@ const config: Config = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       fontFamily:{
-        'bebas': ['Bebas Neue', 'sans-serif'],
-        'bungee': ['Bungee Spice', 'sans-serif'],
-        'lilita': ['Lilita One', 'sans-serif'],
-        'orbitron': ['Orbitron', 'sans-serif'],
-        'oswald': ['Oswald', 'sans-serif'],
-        'overlock': ['Overlock SC', 'sans-serif'],
-        'p-marker': ['Permanent Marker', 'cursive'],
-        'rubik': ['Rubik Doodle Shadow', 'system-ui'],
-        'russo': ['Russo One', 'sans-serif'],
-        'tektur': ['Tektur', 'sans-serif'],
       }
     },
   },

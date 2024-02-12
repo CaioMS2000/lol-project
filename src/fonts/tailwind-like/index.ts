@@ -1,12 +1,3 @@
-// Bebas Neue
-// Bungee Spice
-// Lilita One
-// Orbitron
-// Oswald
-// Overlock SC
-// Permanent Marker
-// Russo One
-// Tektur
 import { Bungee, Bebas_Neue, Lilita_One, Orbitron, Oswald, Overlock_SC, Permanent_Marker, Russo_One, Tektur } from 'next/font/google';
 
 const bungeeFont = Bungee({
