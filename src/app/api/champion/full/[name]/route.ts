@@ -9,13 +9,15 @@ export async function GET(request: NextRequest) {
 	const pathnameSplited = pathname.split('/')
 	const requestedChampion = pathnameSplited[pathnameSplited.length - 1];
 
+	// Leitura do arquivo bruto
 	const res = JSON.parse(
 		fs.readFileSync(
 			`${basePath}/game/data/pt_BR/champion/${requestedChampion}.json`,
 			"utf8"
 		)
 	)["data"][requestedChampion];
-
+	
+	// Construindo informações básicas
 	const champion = {} as Champion;
 	const championProfileImage = fs.readFileSync(
 		`${basePath}/game/img/champion/${requestedChampion}.png`
@@ -31,6 +33,7 @@ export async function GET(request: NextRequest) {
 		splash: Buffer.from(championSplashImage).toString("base64"),
 	};
 
+	// Construindo skins
 	const skinsRef: any[] = res['skins']
 	const skins: Skin[] = []
 
@@ -47,6 +50,8 @@ export async function GET(request: NextRequest) {
 	})
 
 	champion['skins'] = skins
+
+	// Construindo spells
 
 	return NextResponse.json(champion);
 }

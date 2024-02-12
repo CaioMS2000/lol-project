@@ -10,6 +10,14 @@ export interface LightChampion {
 		profile: string;
 		splash: string;
 	};
+
+	spells:{
+		q: Spell,
+		w: Spell,
+		e: Spell,
+		r: Spell,
+		p: Spell,
+	}
 }
 
 export interface Champion extends LightChampion {
@@ -24,4 +32,10 @@ export interface Skin {
 	image: string;
 	name: string;
 	chromas: boolean;
+}
+
+export interface Spell {
+	name: string;
+	image: string;
+	description: string;
 }
