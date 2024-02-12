@@ -36,6 +36,6 @@ export interface Skin {
 
 export interface Spell {
 	name: string;
-	image: string;
+	image?: string;
 	description: string;
 }
