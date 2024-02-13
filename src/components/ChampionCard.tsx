@@ -31,57 +31,106 @@ export default function ChampionCard({ champion }: ChampionCardProps) {
 					</CollapseContent>
 				</CollapseRoot>
 
-				<div
-					id="spells"
-					className="flex flex-wrap gap-5 justify-center"
-				>
-					<div className="flex items-center gap-3">
-						<div className="flex gap-1">
-							<img
-								className="max-h-10 rounded-lg"
-								src={`data:image/png;base64,${champion.spells.q.image}`}
-								alt={`${champion.name} Q`}
-							/>
-							<span className="italic text-sm font-bold">Q</span>
-						</div>
-						<p className="font-bold">{champion.spells.q.name}</p>
-					</div>
+				<div id="spells" className="flex flex-wrap gap-5">
+					<CollapseRoot closable className="w-fit">
+						<CollapseTitle>
+							<div className="flex items-center gap-3">
+								<div className="flex gap-1">
+									<img
+										className="max-h-10 rounded-lg"
+										src={`data:image/png;base64,${champion.spells.q.image}`}
+										alt={`${champion.name} Q`}
+									/>
+									<span className="italic text-sm font-bold">
+										Q
+									</span>
+								</div>
+								<p className="font-bold">
+									{champion.spells.q.name}
+								</p>
+							</div>
+						</CollapseTitle>
+						<CollapseContent>
+							<p className="font-bold">
+								{champion.spells.q.description}
+							</p>
+						</CollapseContent>
+					</CollapseRoot>
 
-					<div className="flex items-center gap-3">
-						<div className="flex gap-1">
-							<img
-								className="max-h-10 rounded-lg"
-								src={`data:image/png;base64,${champion.spells.w.image}`}
-								alt={`${champion.name} W`}
-							/>
-							<span className="italic text-sm font-bold">W</span>
-						</div>
-						<p className="font-bold">{champion.spells.w.name}</p>
-					</div>
+					<CollapseRoot closable className="w-fit">
+						<CollapseTitle>
+							<div className="flex items-center gap-3">
+								<div className="flex gap-1">
+									<img
+										className="max-h-10 rounded-lg"
+										src={`data:image/png;base64,${champion.spells.w.image}`}
+										alt={`${champion.name} W`}
+									/>
+									<span className="italic text-sm font-bold">
+										W
+									</span>
+								</div>
+								<p className="font-bold">
+									{champion.spells.w.name}
+								</p>
+							</div>
+						</CollapseTitle>
+						<CollapseContent>
+							<p className="font-bold">
+								{champion.spells.w.description}
+							</p>
+						</CollapseContent>
+					</CollapseRoot>
 
-					<div className="flex items-center gap-3">
-						<div className="flex gap-1">
-							<img
-								className="max-h-10 rounded-lg"
-								src={`data:image/png;base64,${champion.spells.e.image}`}
-								alt={`${champion.name} E`}
-							/>
-							<span className="italic text-sm font-bold">E</span>
-						</div>
-						<p className="font-bold">{champion.spells.e.name}</p>
-					</div>
+					<CollapseRoot closable className="w-fit">
+						<CollapseTitle>
+							<div className="flex items-center gap-3">
+								<div className="flex gap-1">
+									<img
+										className="max-h-10 rounded-lg"
+										src={`data:image/png;base64,${champion.spells.e.image}`}
+										alt={`${champion.name} E`}
+									/>
+									<span className="italic text-sm font-bold">
+										E
+									</span>
+								</div>
+								<p className="font-bold">
+									{champion.spells.e.name}
+								</p>
+							</div>
+						</CollapseTitle>
+						<CollapseContent>
+							<p className="font-bold">
+								{champion.spells.e.description}
+							</p>
+						</CollapseContent>
+					</CollapseRoot>
 
-					<div className="flex items-center gap-3">
-						<div className="flex gap-1">
-							<img
-								className="max-h-10 rounded-lg"
-								src={`data:image/png;base64,${champion.spells.r.image}`}
-								alt={`${champion.name} R`}
-							/>
-							<span className="italic text-sm font-bold">R</span>
-						</div>
-						<p className="font-bold">{champion.spells.r.name}</p>
-					</div>
+					<CollapseRoot closable className="w-fit">
+						<CollapseTitle>
+							<div className="flex items-center gap-3">
+								<div className="flex gap-1">
+									<img
+										className="max-h-10 rounded-lg"
+										src={`data:image/png;base64,${champion.spells.r.image}`}
+										alt={`${champion.name} R`}
+									/>
+									<span className="italic text-sm font-bold">
+										R
+									</span>
+								</div>
+								<p className="font-bold">
+									{champion.spells.r.name}
+								</p>
+							</div>
+						</CollapseTitle>
+						<CollapseContent>
+							<p className="font-bold">
+								{champion.spells.r.description}
+							</p>
+						</CollapseContent>
+					</CollapseRoot>
 				</div>
 
 				<p className="sm:text-left p-5 font-bold text-3xl inline-flex items-center text-center">
