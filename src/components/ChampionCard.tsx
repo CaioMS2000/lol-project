@@ -6,6 +6,7 @@ import Carousel from "./Carousel";
 import { BsCaretRightFill } from "react-icons/bs";
 import ChampionSkinsCarousel from "./ChampionSkinsCarousel";
 import { orbitron } from "@/fonts/tailwind-like";
+import { CollapseContent, CollapseRoot, CollapseTitle } from "./Collapse";
 
 interface ChampionCardProps extends PropsWithChildren {
 	champion: Champion;
@@ -15,6 +16,74 @@ export default function ChampionCard({ champion }: ChampionCardProps) {
 		<>
 			<div className={"flex flex-col p-2 gap-3 " + orbitron}>
 				<Banner champion={champion} />
+
+				<CollapseRoot id="passive" className="mb-5" closable>
+					<CollapseTitle>
+						<p className="p">
+							<span className="italic text-zinc-600">
+								Passiva:{" "}
+							</span>
+							{champion.spells.p.name}
+						</p>
+					</CollapseTitle>
+					<CollapseContent>
+						{champion.spells.p.description}
+					</CollapseContent>
+				</CollapseRoot>
+
+				<div
+					id="spells"
+					className="flex flex-wrap gap-5 justify-center"
+				>
+					<div className="flex items-center gap-3">
+						<div className="flex gap-1">
+							<img
+								className="max-h-10 rounded-lg"
+								src={`data:image/png;base64,${champion.spells.q.image}`}
+								alt={`${champion.name} Q`}
+							/>
+							<span className="italic text-sm font-bold">Q</span>
+						</div>
+						<p className="font-bold">{champion.spells.q.name}</p>
+					</div>
+
+					<div className="flex items-center gap-3">
+						<div className="flex gap-1">
+							<img
+								className="max-h-10 rounded-lg"
+								src={`data:image/png;base64,${champion.spells.w.image}`}
+								alt={`${champion.name} W`}
+							/>
+							<span className="italic text-sm font-bold">W</span>
+						</div>
+						<p className="font-bold">{champion.spells.w.name}</p>
+					</div>
+
+					<div className="flex items-center gap-3">
+						<div className="flex gap-1">
+							<img
+								className="max-h-10 rounded-lg"
+								src={`data:image/png;base64,${champion.spells.e.image}`}
+								alt={`${champion.name} E`}
+							/>
+							<span className="italic text-sm font-bold">E</span>
+						</div>
+						<p className="font-bold">{champion.spells.e.name}</p>
+					</div>
+
+					<div className="flex items-center gap-3">
+						<div className="flex gap-1">
+							<img
+								className="max-h-10 rounded-lg"
+								src={`data:image/png;base64,${champion.spells.r.image}`}
+								alt={`${champion.name} R`}
+							/>
+							<span className="italic text-sm font-bold">R</span>
+						</div>
+						<p className="font-bold">{champion.spells.r.name}</p>
+					</div>
+				</div>
+
 				<p className="sm:text-left p-5 font-bold text-3xl inline-flex items-center text-center">
 					Skins
 					<BsCaretRightFill className="text-blue-700 hidden sm:block" />
