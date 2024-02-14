@@ -31,7 +31,10 @@ export default function ChampionCard({ champion }: ChampionCardProps) {
 					</CollapseContent>
 				</CollapseRoot>
 
-				{/* <div id="spells" className="flex flex-wrap gap-5">
+				<div
+					id="spells"
+					className="flex flex-wrap gap-5 justify-center"
+				>
 					<CollapseRoot closable className="w-fit">
 						<CollapseTitle>
 							<div className="flex items-center gap-3">
@@ -131,7 +134,7 @@ export default function ChampionCard({ champion }: ChampionCardProps) {
 							</p>
 						</CollapseContent>
 					</CollapseRoot>
-				</div> */}
+				</div>
 
 				<p className="sm:text-left p-5 font-bold text-3xl inline-flex items-center text-center">
 					Skins
