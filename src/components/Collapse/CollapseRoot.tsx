@@ -35,7 +35,6 @@ export default function CollapseRoot({
 				{closable && <input onClick={handleClick} type="checkbox" />}
 
 				{Children.toArray(children).map((child, index) => {
-					console.log(child);
 					if (
 						isValidElement(child) &&
 						typeof child?.type != "string"

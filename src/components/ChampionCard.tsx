@@ -7,6 +7,7 @@ import { BsCaretRightFill } from "react-icons/bs";
 import ChampionSkinsCarousel from "./ChampionSkinsCarousel";
 import { orbitron } from "@/fonts/tailwind-like";
 import { CollapseContent, CollapseRoot, CollapseTitle } from "./Collapse";
+import Collapse from "./Collapse2";
 
 interface ChampionCardProps extends PropsWithChildren {
 	champion: Champion;
@@ -30,8 +31,8 @@ export default function ChampionCard({ champion }: ChampionCardProps) {
 						{champion.spells.p.description}
 					</CollapseContent>
 				</CollapseRoot>
-
-				<div
+				<Collapse></Collapse>
+				{/* <div
 					id="spells"
 					className="flex flex-wrap gap-5 justify-center"
 				>
@@ -134,7 +135,7 @@ export default function ChampionCard({ champion }: ChampionCardProps) {
 							</p>
 						</CollapseContent>
 					</CollapseRoot>
-				</div>
+				</div> */}
 
 				<p className="sm:text-left p-5 font-bold text-3xl inline-flex items-center text-center">
 					Skins
