@@ -1,13 +1,13 @@
 "use client";
 import { PropsWithChildren, HTMLProps, useEffect } from "react";
 
-interface CollapseProps extends PropsWithChildren, HTMLProps<HTMLElement> {}
+interface AccordionProps extends PropsWithChildren, HTMLProps<HTMLElement> {}
 
-export default function Collapse({ ...rest }: CollapseProps) {
+export default function Accordion({ ...rest }: AccordionProps) {
 	function handleClick(e: Event) {
 		const targetElement = e.target as Element;
-		const head = getElement(".caio-collapse-head");
-		const body = getElement(".caio-collapse-body");
+		const head = getElement(".caio-accordion-head");
+		const body = getElement(".caio-accordion-body");
 		const filhos = head.children;
 		const contents = Array.from(body.children);
 
@@ -38,7 +38,7 @@ export default function Collapse({ ...rest }: CollapseProps) {
 
 	useEffect(() => {
 		console.clear();
-		const head = getElement(".caio-collapse-head");
+		const head = getElement(".caio-accordion-head");
 
 		head.addEventListener("click", handleClick);
 
@@ -49,24 +49,24 @@ export default function Collapse({ ...rest }: CollapseProps) {
 
 	return (
 		<>
-			<div className="caio-collapse w-fit cursor-pointer">
-				<div className="caio-collapse-head flex gap-1">
+			<div className="caio-accordion w-fit cursor-pointer">
+				<div className="caio-accordion-head flex gap-1">
 					<p className="border-2 border-b-0 p-1">habilidade Q</p>
 					<p className="">habilidade W</p>
 					<p className="">habilidade E</p>
 					<p className="">habilidade R</p>
 				</div>
-				<div className="caio-collapse-body border-2 p-1">
-					<div className="div caio-collapse-content active">
+				<div className="caio-accordion-body border-2 p-1">
+					<div className="div caio-accordion-content active">
 						descrição da habilidade Q
 					</div>
-					<div className="div caio-collapse-content hidden">
+					<div className="div caio-accordion-content hidden">
 						descrição da habilidade W
 					</div>
-					<div className="div caio-collapse-content hidden">
+					<div className="div caio-accordion-content hidden">
 						descrição da habilidade E
 					</div>
-					<div className="div caio-collapse-content hidden">
+					<div className="div caio-accordion-content hidden">
 						descrição da habilidade R
 					</div>
 				</div>
