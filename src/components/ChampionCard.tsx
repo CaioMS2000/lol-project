@@ -7,7 +7,8 @@ import { BsCaretRightFill } from "react-icons/bs";
 import ChampionSkinsCarousel from "./ChampionSkinsCarousel";
 import { orbitron } from "@/fonts/tailwind-like";
 import { CollapseContent, CollapseRoot, CollapseTitle } from "./Collapse";
-import Accordion from "./Accordion";
+import { AccordionBody, AccordionHead, AccordionRoot } from "./Accordion";
+import Accordion from "./AccordionBase";
 
 interface ChampionCardProps extends PropsWithChildren {
 	champion: Champion;
@@ -15,8 +16,8 @@ interface ChampionCardProps extends PropsWithChildren {
 export default function ChampionCard({ champion }: ChampionCardProps) {
 	return (
 		<>
-			<div className={"flex flex-col p-2 gap-3 " + orbitron}>
-				<Banner champion={champion} />
+			<div key={'caio'} className={"flex flex-col p-2 gap-3 " + orbitron}>
+				{/* <Banner champion={champion} /> */}
 
 				<CollapseRoot id="passive" className="mb-5" closable>
 					<CollapseTitle>
@@ -31,7 +32,87 @@ export default function ChampionCard({ champion }: ChampionCardProps) {
 						{champion.spells.p.description}
 					</CollapseContent>
 				</CollapseRoot>
-				<Accordion></Accordion>
+				<AccordionRoot>
+					<AccordionHead activeClass="border-2 border-b-0 p-1">
+						<div aria-label={'q'} className="flex items-center gap-3">
+							<div className="flex gap-1">
+								<img
+									className="max-h-10 rounded-lg"
+									src={`data:image/png;base64,${champion.spells.q.image}`}
+									alt={`${champion.name} Q`}
+								/>
+								<span className="italic text-sm font-bold">
+									Q
+								</span>
+							</div>
+							<p className="font-bold">
+								{champion.spells.q.name}
+							</p>
+						</div>
+
+						<div aria-label={'w'} className="flex items-center gap-3">
+							<div className="flex gap-1">
+								<img
+									className="max-h-10 rounded-lg"
+									src={`data:image/png;base64,${champion.spells.w.image}`}
+									alt={`${champion.name} W`}
+								/>
+								<span className="italic text-sm font-bold">
+									W
+								</span>
+							</div>
+							<p className="font-bold">
+								{champion.spells.w.name}
+							</p>
+						</div>
+
+						<div aria-label={'e'} className="flex items-center gap-3">
+							<div className="flex gap-1">
+								<img
+									className="max-h-10 rounded-lg"
+									src={`data:image/png;base64,${champion.spells.e.image}`}
+									alt={`${champion.name} E`}
+								/>
+								<span className="italic text-sm font-bold">
+									E
+								</span>
+							</div>
+							<p className="font-bold">
+								{champion.spells.e.name}
+							</p>
+						</div>
+
+						<div aria-label={'r'} className="flex items-center gap-3">
+							<div className="flex gap-1">
+								<img
+									className="max-h-10 rounded-lg"
+									src={`data:image/png;base64,${champion.spells.r.image}`}
+									alt={`${champion.name} R`}
+								/>
+								<span className="italic text-sm font-bold">
+									R
+								</span>
+							</div>
+							<p className="font-bold">
+								{champion.spells.r.name}
+							</p>
+						</div>
+					</AccordionHead>
+					<AccordionBody>
+						<p className="font-bold">
+							{champion.spells.q.description}
+						</p>
+						<p className="font-bold">
+							{champion.spells.w.description}
+						</p>
+						<p className="font-bold">
+							{champion.spells.e.description}
+						</p>
+						<p className="font-bold">
+							{champion.spells.r.description}
+						</p>
+					</AccordionBody>
+				</AccordionRoot>
 				{/* <div
 					id="spells"
 					className="flex flex-wrap gap-5 justify-center"
