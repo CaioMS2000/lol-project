@@ -5,35 +5,39 @@ interface AccordionProps extends PropsWithChildren, HTMLProps<HTMLElement> {}
 
 export default function Accordion({ ...rest }: AccordionProps) {
 	function handleClick(e: Event) {
+		const activeOptionClass = 'active-option';
+		const activeContentClass = 'active-content';
+		const classes = ["border-2", "border-b-0", "p-1"];
 		const targetElement = e.target as Element;
-		const head = getElement(".caio-accordion-head");
-		const body = getElement(".caio-accordion-body");
-		const filhos = head.children;
-		const contents = Array.from(body.children);
+		const accordionHead = getElement(".caio-accordion-head");
+		const accordionBody = getElement(".caio-accordion-body");
+		const accordionHeadChildren = Array.from(accordionHead.children);
+		const accordionBodyChildren = Array.from(accordionBody.children);
+		const activeOption = accordionHead.querySelector('.active-option')
+		const activeContent = accordionBody.querySelector('.active-content')
 
-		const past = head.querySelector(".border-2.border-b-0.p-1");
-		past?.classList.remove("border-2");
-		past?.classList.remove("border-b-0");
-		past?.classList.remove("p-1");
+		if(!activeOption) return;
+		if(!activeContent) return;
 
-		targetElement.classList.add("border-2");
-		targetElement.classList.add("border-b-0");
-		targetElement.classList.add("p-1");
+		// atualizando o 'head'
+		classes.forEach(c => activeOption.classList.remove(c))
+		activeOption.classList.remove(activeOptionClass)
 
-		Array.from(filhos).forEach((filho, i) => {
-			if (filho === e.target) {
-				const el = contents[i];
-
-				const atual = getElement(".active");
-				console.log(atual);
-
-				atual.classList.remove("active");
-				atual.classList.add("hidden");
-
-				el.classList.add("active");
-				el.classList.remove("hidden");
+		let index = -1;
+		accordionHeadChildren.forEach((opt, i) => {
+			if(opt === targetElement){
+				classes.forEach(c => opt.classList.add(c))
+				opt.classList.add(activeOptionClass)
+				index = i
 			}
-		});
+		})
+
+		// atualizando o 'body'
+		activeContent.classList.add('hidden')
+		activeContent.classList.remove(activeContentClass)
+
+		accordionBodyChildren[index].classList.remove('hidden')
+		accordionBodyChildren[index].classList.add(activeContentClass)
 	}
 
 	useEffect(() => {
@@ -51,13 +55,13 @@ export default function Accordion({ ...rest }: AccordionProps) {
 		<>
 			<div className="caio-accordion w-fit cursor-pointer">
 				<div className="caio-accordion-head flex gap-1">
-					<p className="border-2 border-b-0 p-1">habilidade Q</p>
+					<p className="border-2 border-b-0 p-1 active-option">habilidade Q</p>
 					<p className="">habilidade W</p>
 					<p className="">habilidade E</p>
 					<p className="">habilidade R</p>
 				</div>
 				<div className="caio-accordion-body border-2 p-1">
-					<div className="div caio-accordion-content active">
+					<div className="div caio-accordion-content active-content">
 						descrição da habilidade Q
 					</div>
 					<div className="div caio-accordion-content hidden">
