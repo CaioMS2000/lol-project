@@ -17,7 +17,7 @@ export default function ChampionCard({ champion }: ChampionCardProps) {
 	return (
 		<>
 			<div key={'caio'} className={"flex flex-col p-2 gap-3 " + orbitron}>
-				{/* <Banner champion={champion} /> */}
+				<Banner champion={champion} />
 
 				<CollapseRoot id="passive" className="mb-5" closable>
 					<CollapseTitle>
