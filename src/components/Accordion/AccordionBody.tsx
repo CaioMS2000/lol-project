@@ -15,11 +15,12 @@ interface AccordionBodyProps
 
 export default function AccordionBody({
 	children,
+	className,
 	...rest
 }: AccordionBodyProps) {
 	return (
 		<>
-			<div className="my-accordion-body border-2 p-1">
+			<div className={"my-accordion-body border-2 p-1 " + className}>
 				{Children.toArray(children).map((child, index) => {
 					if (isValidElement(child)) {
 						if (index == 0) {
