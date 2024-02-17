@@ -9,6 +9,28 @@ export async function GET(request: NextRequest) {
 	const pathnameSplited = pathname.split("/");
 	const requestedChampion = pathnameSplited[pathnameSplited.length - 1];
 
+	// factories úteis
+	function makeSpellId(spell: Record<string, string>){
+		const idExceptions = ['ApheliosQ', 'ApheliosE']
+		let exceptionIndex = -1;
+		const isException = idExceptions.some((excp, index) => {
+			const flag = spell.id.includes(excp)
+
+			if(flag){
+				exceptionIndex = index
+			}
+
+			return flag
+		})
+		const spellId = isException?idExceptions[exceptionIndex].slice(-1).toLocaleLowerCase():spell.id.slice(-1).toLocaleLowerCase();
+
+		return {
+			id: spellId,
+			isException,
+		}
+	}
+	// ####
+
 	// Leitura do arquivo bruto
 	const res = JSON.parse(
 		fs.readFileSync(
@@ -66,9 +88,11 @@ export async function GET(request: NextRequest) {
 	}
 
 	spellsRef.forEach((spl) => {
-		const spellId = spl.id.slice(-1).toLocaleLowerCase();
+		const {id:spellId, isException} = makeSpellId(spl)
+		// const spellId = spl.id.slice(-1).toLocaleLowerCase();
+		const imageFile = isException?`${spl.id}.png`:`${requestedChampion}${spellId.toLocaleUpperCase()}.png`;
 		const spellImage = fs.readFileSync(
-			`${basePath}/game/img/spell/${requestedChampion}${spellId.toLocaleUpperCase()}.png`
+			`${basePath}/game/img/spell/${imageFile}`
 		);
 
 		const spell: Spell = {
