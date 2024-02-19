@@ -20,7 +20,7 @@ export default function AccordionBody({
 }: AccordionBodyProps) {
 	return (
 		<>
-			<div className={"my-accordion-body border-2 p-1" + ` ${className}`}>
+			<div className={"my-accordion-body" + ` ${className}`}>
 				{Children.toArray(children).map((child, index) => {
 					if (isValidElement(child)) {
 						if (index == 0) {

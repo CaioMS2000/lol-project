@@ -15,7 +15,6 @@ interface ChampionCardProps extends PropsWithChildren {
 	champion: Champion;
 }
 export default function ChampionCard({ champion }: ChampionCardProps) {
-
 	return (
 		<>
 			<div className={"flex flex-col p-2 gap-3 " + orbitron}>
@@ -34,11 +33,12 @@ export default function ChampionCard({ champion }: ChampionCardProps) {
 						{champion.spells.p.description}
 					</CollapseContent>
 				</CollapseRoot>
-				<AccordionRoot>
+				<AccordionRoot className=" bg-zinc-800 max-w-[1000px] shadow-[0_0_30px_2px] shadow-black rounded-lg">
+					{/* box-shadow: #f5e400 0px 0px 16px 2px; */}
 					<AccordionHead activeClass="border-2 border-b-0 p-1">
 						<div
 							aria-label={"q"}
-							className="flex items-center gap-3"
+							className="flex items-center gap-3 p-2"
 						>
 							<div className="flex gap-1">
 								<img
@@ -57,7 +57,7 @@ export default function ChampionCard({ champion }: ChampionCardProps) {
 
 						<div
 							aria-label={"w"}
-							className="flex items-center gap-3"
+							className="flex items-center gap-3 p-2"
 						>
 							<div className="flex gap-1">
 								<img
@@ -76,7 +76,7 @@ export default function ChampionCard({ champion }: ChampionCardProps) {
 
 						<div
 							aria-label={"e"}
-							className="flex items-center gap-3"
+							className="flex items-center gap-3 p-2"
 						>
 							<div className="flex gap-1">
 								<img
@@ -95,7 +95,7 @@ export default function ChampionCard({ champion }: ChampionCardProps) {
 
 						<div
 							aria-label={"r"}
-							className="flex items-center gap-3"
+							className="flex items-center gap-3 p-2"
 						>
 							<div className="flex gap-1">
 								<img
@@ -112,7 +112,7 @@ export default function ChampionCard({ champion }: ChampionCardProps) {
 							</p>
 						</div>
 					</AccordionHead>
-					<AccordionBody>
+					<AccordionBody className="rounded-[inherit] rounded-t-none">
 						<p className="font-bold flex flex-col gap-2">
 							{removeFakeHtmlTags(champion.spells.q.description)
 								.split("<br>")
