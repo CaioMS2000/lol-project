@@ -12,7 +12,7 @@ export default function CollapseContent({
 }: CollapseContentProps) {
 	return (
 		<>
-			<div {...rest} className={"collapse-content " + className}>{children}</div>
+			<div {...rest} className={"collapse-content" + ` ${className}`}>{children}</div>
 		</>
 	);
 }

@@ -31,7 +31,7 @@ export default function CollapseRoot({
 
 	return (
 		<>
-			<div {...rest} tabIndex={0} className={"collapse " + className}>
+			<div {...rest} tabIndex={0} className={"collapse" + ` ${className}`}>
 				{closable && <input onClick={handleClick} type="checkbox" />}
 
 				{Children.toArray(children).map((child, index) => {

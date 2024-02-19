@@ -10,7 +10,7 @@ export default function Carousel({ images, className, ...rest }: CarouselProps) 
 
 	return (
 		<>
-			<div {...rest} className={"carousel w-full " + className}>
+			<div {...rest} className={"carousel w-full" + ` ${className}`}>
 				{images.map((i, index) => {
 					const indexOfPrev = index == 0?indexOfLast:index-1;
 					const indexOfNext = index == indexOfLast?0:index+1;

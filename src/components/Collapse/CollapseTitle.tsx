@@ -7,7 +7,7 @@ interface CollapseTitleProps extends PropsWithChildren, HTMLProps<HTMLDivElement
 export default function CollapseTitle({children, className, ...rest}: CollapseTitleProps) {
 	return (
 		<>
-			<div {...rest} className={"collapse-title " + className}>
+			<div {...rest} className={"collapse-title" + ` ${className}`}>
                 {children}
 			</div>
 		</>
