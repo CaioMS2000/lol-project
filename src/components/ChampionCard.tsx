@@ -9,19 +9,21 @@ import { orbitron } from "@/fonts/tailwind-like";
 import { CollapseContent, CollapseRoot, CollapseTitle } from "./Collapse";
 import { AccordionBody, AccordionHead, AccordionRoot } from "./Accordion";
 import Accordion from "./AccordionBase";
+import { removeFakeHtmlTags } from "@/utils";
 
 interface ChampionCardProps extends PropsWithChildren {
 	champion: Champion;
 }
 export default function ChampionCard({ champion }: ChampionCardProps) {
+
 	return (
 		<>
-			<div key={'caio'} className={"flex flex-col p-2 gap-3 " + orbitron}>
+			<div className={"flex flex-col p-2 gap-3 " + orbitron}>
 				<Banner champion={champion} />
 
 				<CollapseRoot id="passive" className="mb-5" closable>
 					<CollapseTitle>
-						<p className="p">
+						<p className="">
 							<span className="italic text-zinc-600">
 								Passiva:{" "}
 							</span>
@@ -34,7 +36,10 @@ export default function ChampionCard({ champion }: ChampionCardProps) {
 				</CollapseRoot>
 				<AccordionRoot>
 					<AccordionHead activeClass="border-2 border-b-0 p-1">
-						<div aria-label={'q'} className="flex items-center gap-3">
+						<div
+							aria-label={"q"}
+							className="flex items-center gap-3"
+						>
 							<div className="flex gap-1">
 								<img
 									className="max-h-10 rounded-lg"
@@ -50,7 +55,10 @@ export default function ChampionCard({ champion }: ChampionCardProps) {
 							</p>
 						</div>
 
-						<div aria-label={'w'} className="flex items-center gap-3">
+						<div
+							aria-label={"w"}
+							className="flex items-center gap-3"
+						>
 							<div className="flex gap-1">
 								<img
 									className="max-h-10 rounded-lg"
@@ -66,7 +74,10 @@ export default function ChampionCard({ champion }: ChampionCardProps) {
 							</p>
 						</div>
 
-						<div aria-label={'e'} className="flex items-center gap-3">
+						<div
+							aria-label={"e"}
+							className="flex items-center gap-3"
+						>
 							<div className="flex gap-1">
 								<img
 									className="max-h-10 rounded-lg"
@@ -82,7 +93,10 @@ export default function ChampionCard({ champion }: ChampionCardProps) {
 							</p>
 						</div>
 
-						<div aria-label={'r'} className="flex items-center gap-3">
+						<div
+							aria-label={"r"}
+							className="flex items-center gap-3"
+						>
 							<div className="flex gap-1">
 								<img
 									className="max-h-10 rounded-lg"
@@ -99,17 +113,33 @@ export default function ChampionCard({ champion }: ChampionCardProps) {
 						</div>
 					</AccordionHead>
 					<AccordionBody>
-						<p className="font-bold">
-							{champion.spells.q.description}
+						<p className="font-bold flex flex-col gap-2">
+							{removeFakeHtmlTags(champion.spells.q.description)
+								.split("<br>")
+								.map((txt, index) => (
+									<span key={index}>{txt}</span>
+								))}
 						</p>
-						<p className="font-bold">
-							{champion.spells.w.description}
+						<p className="font-bold flex flex-col gap-2">
+							{removeFakeHtmlTags(champion.spells.w.description)
+								.split("<br>")
+								.map((txt, index) => (
+									<span key={index}>{txt}</span>
+								))}
 						</p>
-						<p className="font-bold">
-							{champion.spells.e.description}
+						<p className="font-bold flex flex-col gap-2">
+							{removeFakeHtmlTags(champion.spells.e.description)
+								.split("<br>")
+								.map((txt, index) => (
+									<span key={index}>{txt}</span>
+								))}
 						</p>
-						<p className="font-bold">
-							{champion.spells.r.description}
+						<p className="font-bold flex flex-col gap-2">
+							{removeFakeHtmlTags(champion.spells.r.description)
+								.split("<br>")
+								.map((txt, index) => (
+									<span key={index}>{txt}</span>
+								))}
 						</p>
 					</AccordionBody>
 				</AccordionRoot>
