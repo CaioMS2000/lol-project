@@ -22,10 +22,15 @@ export default function ChampionCard({ champion }: ChampionCardProps) {
 
 				<CollapseRoot id="passive" className="mb-5" closable>
 					<CollapseTitle>
-						<p className="inline-flex gap-2">
+						<p className="inline-flex gap-2 items-center">
 							<span className="italic text-zinc-600">
 								Passiva:{" "}
 							</span>
+							<img
+								className="max-h-10 rounded-lg"
+								src={`data:image/png;base64,${champion.spells.p.image}`}
+								alt={`${champion.name} P`}
+							/>
 							{champion.spells.p.name}
 							<FaSortDown className="collapse-icon" />
 							<FaSortUp className="collapse-icon" />

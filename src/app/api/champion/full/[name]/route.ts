@@ -105,7 +105,10 @@ export async function GET(request: NextRequest) {
 
 	});
 
-	const passiveRef: Record<string, string> = res["passive"];
+	const passiveRef: Record<string, any> = res["passive"];
+	const passiveImage = fs.readFileSync(
+		`${basePath}/game/img/passive/${passiveRef['image']['full']}`
+	);
 
 	champion['spells'] = {
 		q: spellObj['q'],
@@ -115,6 +118,7 @@ export async function GET(request: NextRequest) {
 		p: {
 			description: passiveRef['description'],
 			name: passiveRef['name'],
+			image: Buffer.from(passiveImage).toString("base64"),
 		},
 	}
 
