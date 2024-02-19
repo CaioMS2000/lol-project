@@ -19,11 +19,13 @@ export default function AccordionHead({
 	activeClass,
 	...rest
 }: AccordionHeadProps) {
-  const targetedElement = ".my-accordion-head";
+	const targetedElement = ".my-accordion-head";
 
 	function handleClick(e: Event) {
-		const targetElement = (e.target as Element).closest(".my-accordion-head > *");
-    if(!targetElement) return;
+		const targetElement = (e.target as Element).closest(
+			".my-accordion-head > *"
+		);
+		if (!targetElement) return;
 
 		const activeOptionClass = "active-option";
 		const activeContentClass = "active-content";
@@ -71,7 +73,7 @@ export default function AccordionHead({
 
 	return (
 		<>
-			<div className="my-accordion-head flex gap-1">
+			<div className="my-accordion-head flex gap-2 justify-between">
 				{Children.toArray(children).map((child, index) => {
 					const elementIsValid = isValidElement(child);
 
