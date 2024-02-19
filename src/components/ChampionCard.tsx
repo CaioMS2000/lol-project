@@ -33,7 +33,7 @@ export default function ChampionCard({ champion }: ChampionCardProps) {
 						{champion.spells.p.description}
 					</CollapseContent>
 				</CollapseRoot>
-				<AccordionRoot className=" bg-zinc-800 max-w-[1000px] shadow-[0_0_30px_2px] shadow-black rounded-lg">
+				<AccordionRoot className="cursor-pointer bg-zinc-800 max-w-[1000px] shadow-[0_0_30px_2px] shadow-black rounded-lg">
 					{/* box-shadow: #f5e400 0px 0px 16px 2px; */}
 					<AccordionHead activeClass="border-2 border-b-0 p-1">
 						<div
@@ -112,7 +112,7 @@ export default function ChampionCard({ champion }: ChampionCardProps) {
 							</p>
 						</div>
 					</AccordionHead>
-					<AccordionBody className="rounded-[inherit] rounded-t-none">
+					<AccordionBody className="rounded-[inherit] rounded-t-none border-2">
 						<p className="font-bold flex flex-col gap-2">
 							{removeFakeHtmlTags(champion.spells.q.description)
 								.split("<br>")

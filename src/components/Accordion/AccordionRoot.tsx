@@ -14,7 +14,7 @@ export default function AccordionRoot({
 		<>
 			<div
 				className={
-					"my-accordion w-fit cursor-pointer" + ` ${className}`
+					"my-accordion w-fit" + ` ${className}`
 				}
 			>
 				{children}
