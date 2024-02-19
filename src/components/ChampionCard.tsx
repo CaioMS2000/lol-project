@@ -8,7 +8,7 @@ import ChampionSkinsCarousel from "./ChampionSkinsCarousel";
 import { orbitron } from "@/fonts/tailwind-like";
 import { CollapseContent, CollapseRoot, CollapseTitle } from "./Collapse";
 import { AccordionBody, AccordionHead, AccordionRoot } from "./Accordion";
-import Accordion from "./AccordionBase";
+import { FaSortDown, FaSortUp } from "react-icons/fa6";
 import { removeFakeHtmlTags } from "@/utils";
 
 interface ChampionCardProps extends PropsWithChildren {
@@ -22,11 +22,13 @@ export default function ChampionCard({ champion }: ChampionCardProps) {
 
 				<CollapseRoot id="passive" className="mb-5" closable>
 					<CollapseTitle>
-						<p className="">
+						<p className="inline-flex gap-2">
 							<span className="italic text-zinc-600">
 								Passiva:{" "}
 							</span>
 							{champion.spells.p.name}
+							<FaSortDown className="collapse-icon" />
+							<FaSortUp className="collapse-icon" />
 						</p>
 					</CollapseTitle>
 					<CollapseContent>
@@ -34,8 +36,7 @@ export default function ChampionCard({ champion }: ChampionCardProps) {
 					</CollapseContent>
 				</CollapseRoot>
 				<AccordionRoot className="cursor-pointer bg-zinc-800 max-w-[1000px] shadow-[0_0_30px_2px] shadow-black rounded-lg">
-					{/* box-shadow: #f5e400 0px 0px 16px 2px; */}
-					<AccordionHead activeClass="border-2 border-b-0 p-1">
+					<AccordionHead activeClass="border-2 border-b-0 p-1 border-zinc-500">
 						<div
 							aria-label={"q"}
 							className="flex items-center gap-3 p-2"
@@ -112,7 +113,7 @@ export default function ChampionCard({ champion }: ChampionCardProps) {
 							</p>
 						</div>
 					</AccordionHead>
-					<AccordionBody className="rounded-[inherit] rounded-t-none border-2">
+					<AccordionBody className="rounded-[inherit] rounded-t-none border-2 p-3 border-zinc-500">
 						<p className="font-bold flex flex-col gap-2">
 							{removeFakeHtmlTags(champion.spells.q.description)
 								.split("<br>")

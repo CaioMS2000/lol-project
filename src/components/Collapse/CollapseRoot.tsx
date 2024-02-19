@@ -1,5 +1,10 @@
 "use client";
 import {
+	getAllElementFrom,
+	getElement,
+	getElementFrom,
+} from "@/utils/client-only";
+import {
 	HTMLProps,
 	PropsWithChildren,
 	Fragment,
@@ -9,6 +14,7 @@ import {
 	Children,
 	cloneElement,
 	useState,
+	useEffect,
 } from "react";
 
 interface CollapseRootProps extends HTMLProps<HTMLDivElement> {
@@ -22,16 +28,40 @@ export default function CollapseRoot({
 	closable = false,
 	...rest
 }: CollapseRootProps) {
+	const titleComponentClass = ".collapse-title";
 	const [swapClass, setSwapClass] = useState("hidden");
+
+	function handleIcons() {
+		const title: Element = getElement(titleComponentClass);
+		const titleIcons = Array.from(getAllElementFrom(title, `.collapse-icon`));
+		const activeIcon = {
+			element: document.createElement("html") as Element,
+			index: -1,
+		};
+		activeIcon.element = getElementFrom(
+			title,
+			".collapse-icon:not(.hidden)"
+		);
+		activeIcon.index = titleIcons.indexOf(activeIcon.element);
+		activeIcon.element.classList.add('hidden');
+		
+		titleIcons[(activeIcon.index + 1) % titleIcons.length].classList.remove('hidden')
+	}
 
 	function handleClick() {
 		if (swapClass == "hidden") setSwapClass("block");
 		else setSwapClass("hidden");
+
+		handleIcons();
 	}
 
 	return (
 		<>
-			<div {...rest} tabIndex={0} className={"collapse" + ` ${className}`}>
+			<div
+				{...rest}
+				tabIndex={0}
+				className={"collapse" + ` ${className}`}
+			>
 				{closable && <input onClick={handleClick} type="checkbox" />}
 
 				{Children.toArray(children).map((child, index) => {

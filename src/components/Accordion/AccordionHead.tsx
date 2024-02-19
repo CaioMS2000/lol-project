@@ -1,4 +1,5 @@
 "use client";
+import { getElement } from "@/utils/client-only";
 import {
 	PropsWithChildren,
 	HTMLProps,
@@ -97,12 +98,4 @@ export default function AccordionHead({
 			</div>
 		</>
 	);
-}
-
-function getElement(query: string) {
-	const element = document.querySelector(query);
-
-	if (!element) throw Error(`${query} não encontrado`);
-
-	return element;
 }
